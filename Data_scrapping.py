@@ -86,7 +86,7 @@ print(price)
 # In[10]:
 
 
-csv_file= open('ajout_IAS_scrape.csv', 'w', encoding='utf-8')
+csv_file= open('data/ajout_IAS_scrape.csv', 'w', encoding='utf-8')
 csv_writer= csv.writer(csv_file)
 csv_writer.writerow(['headline','summarry','status','price'])
 
