@@ -86,7 +86,7 @@ print(price)
 # In[10]:
 
 
-csv_file= open('ajout_IAS_scrape.csv', 'w', encoding='utf-8')
+csv_file= open('data/ajout_IAS_scrape.csv', 'w', encoding='utf-8')
 csv_writer= csv.writer(csv_file)
 csv_writer.writerow(['headline','summarry','status','price'])
 
@@ -109,7 +109,7 @@ for article in soup.find_all('article', class_="rh_list_card"):
     csv_writer.writerow([headline, summarry, status, price])
 csv_file.close()
 
-upload_file_s3("data/Data_scapping.py","m2dsia-pomane-mamadou","Data_scapping.py")
+upload_file_s3("data/Data_scapping.csv","m2dsia-pomane-mamadou","Data_scapping.csv")
 # In[ ]:
 
 
