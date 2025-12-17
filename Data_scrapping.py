@@ -12,24 +12,14 @@ import pandas as pd
 import csv
 import boto3
 
-# In[17]:
+
+# In[2]:
 
 
 url= 'https://immobilier-au-senegal.com/list-layout/page/3/'
 
 
-# In[18]:
-
-
-## Recupere le code source de la page a Scapper
-c_source=requests.get(url).text
-
-
-# In[19]:
-
-
-soup= BeautifulSoup(c_source, 'lxml')
-# print(soup.prettify())
+# In[3]:
 
 
 #fonction
@@ -39,7 +29,17 @@ def upload_file_s3(file_path, bucket_name, object_name=None):
         object_name = file_path
 
     s3 = boto3.client("s3")
-    s3.upload_file(data/ajout_IAS_scrape.csv, m2dsia-pomane-mamadou, object_name)
+    s3.upload_file(file_path, bucket_name, object_name)
+
+## Recupere le code source de la page a Scapper
+c_source=requests.get(url).text
+
+
+# In[4]:
+
+soup= BeautifulSoup(c_source, 'lxml')
+# print(soup.prettify())
+
 
 # In[5]:
 
@@ -108,6 +108,11 @@ for article in soup.find_all('article', class_="rh_list_card"):
 
     csv_writer.writerow([headline, summarry, status, price])
 csv_file.close()
+
+upload_file_s3("data/Data_scapping.py","m2dsia-pomane-mamadou","Data_scapping.py")
+# In[ ]:
+
+
 
 
 # In[14]:
