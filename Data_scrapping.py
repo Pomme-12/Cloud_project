@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import csv
-
+import boto3
 
 # In[17]:
 
@@ -31,6 +31,15 @@ c_source=requests.get(url).text
 soup= BeautifulSoup(c_source, 'lxml')
 # print(soup.prettify())
 
+
+#fonction
+
+def upload_file_s3(file_path, bucket_name, object_name=None):
+    if object_name is None:
+        object_name = file_path
+
+    s3 = boto3.client("s3")
+    s3.upload_file(data/ajout_IAS_scrape.csv, m2dsia-pomane-mamadou, object_name)
 
 # In[5]:
 
