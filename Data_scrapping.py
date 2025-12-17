@@ -109,7 +109,7 @@ for article in soup.find_all('article', class_="rh_list_card"):
     csv_writer.writerow([headline, summarry, status, price])
 csv_file.close()
 
-upload_file_s3("Cloud_project/ajout_IAS_scrape.csv","m2dsia-pomane-mamadou","ajout_IAS_scrape.csv")
+upload_file_s3("app/ajout_IAS_scrape.csv","m2dsia-pomane-mamadou","ajout_IAS_scrape.csv")
 # In[ ]:
 
 
